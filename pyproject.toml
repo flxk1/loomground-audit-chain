@@ -1,0 +1,46 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 flxk1
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "loomground-audit-chain"
+description = "Append-only, hash-chained, Ed25519-signed events with chain verification and witness-escape records."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSES/Apache-2.0.txt", "LICENSES/CC-BY-4.0.txt"]
+authors = [{ name = "Loomground Contributors" }]
+# Consumed from loomground-workspace: paths.LOG_ROOT_DEFAULT,
+# identity.{folder_hash, legacy_folder_hash, _filesystem_is_case_insensitive},
+# folder_context.resolve_folder_context, workspace_registry.add_known_workspace.
+dependencies = [
+    "loomground-workspace>=0.1,<0.2",
+    "cryptography>=41.0",
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.1.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/flxk1/loomground-audit-chain"
+Repository = "https://github.com/flxk1/loomground-audit-chain"
+Issues = "https://github.com/flxk1/loomground-audit-chain/issues"
+
+[tool.setuptools.dynamic]
+version = { attr = "loomground_audit_chain._version.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["loomground_audit_chain*"]
+
+[tool.setuptools.package-data]
+loomground_audit_chain = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
