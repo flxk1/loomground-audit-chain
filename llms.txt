@@ -21,7 +21,7 @@ result = log.verify_chain()
 result.ok, result.total_events, intact_attestation(result, subject=log.folder_id)
 ```
 
-Keys live under `~/.workspace/keys/<host_id>/` (`WORKSPACE_KEY_DIR` overrides). The log root defaults to `~/.workspace/log` (`RVND_LOG_ROOT` or `log_root=` overrides).
+Keys live under `~/.workspace/keys/<host_id>/` (`WORKSPACE_KEY_DIR` overrides). The log root defaults to `~/.workspace/log` (`LOOMGROUND_LOG_ROOT` or `log_root=` overrides).
 
 ## Interface
 - `LogEvent(event, folder_path, pair_id, lifecycle_state, channel, problem_id, source_hash, actor, audit_id, ts, extra)`; `append()` stamps `prev_hash`, `signature`, `host_id`
@@ -31,9 +31,9 @@ Keys live under `~/.workspace/keys/<host_id>/` (`WORKSPACE_KEY_DIR` overrides). 
 - `witness_escape.record_witness_escape(folder, paths, actor)` · `recent_witness_escapes(folder, actor, since=)` · CLI `python -m loomground_audit_chain.witness_escape record`
 - `audit_drop.record(where, exc, log_root=)` · `durable_drops(log_root)` — a dropped audit write on stderr, in process, and in `audit-drops.jsonl`
 - `pillar.intact_attestation(result, *, subject) → dict` with the schema-shaped `intact` object
-- host ports: `mutation_log.purged_pair_ref`, `content_signature`, `register_workspace`, `witness_escape.quarantine`; compatibility constants in [docs/seam.md](docs/seam.md)
+- host ports: `mutation_log.purged_pair_ref`, `content_signature`, `register_workspace`, `witness_escape.quarantine`; public constants in [docs/seam.md](docs/seam.md)
 
 ## Family
-Assurance artifacts, pillar: `intact` of [governance-certification](https://github.com/flxk1/governance-certification). Consumes `loomground-workspace` (folder identity, log root, allowlist). Consumed by hosts, e.g. RVND; optional for every consumer. Catalogue: [loomground/CATALOGUE.md](https://github.com/flxk1/loomground/blob/main/CATALOGUE.md).
+Assurance artifacts, pillar: `intact` of [governance-certification](https://github.com/flxk1/governance-certification). Consumes `loomground-workspace` (folder identity, log root, allowlist). Optional for every host consumer. Catalogue: [loomground/CATALOGUE.md](https://github.com/flxk1/loomground/blob/main/CATALOGUE.md).
 
 Language: loomground — guide https://github.com/flxk1/loomground/blob/main/llms.txt (the .lg language an agent reads, emits, validates); catalogue https://github.com/flxk1/loomground/blob/main/CATALOGUE.json

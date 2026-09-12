@@ -44,9 +44,9 @@ from loomground_workspace.identity import (  # noqa: F401  (re-exported)
 from loomground_workspace.paths import LOG_ROOT_DEFAULT  # noqa: F401  (re-exported)
 from loomground_workspace.workspace_registry import add_known_workspace as _add_known_workspace
 
-#: Compatibility surface (docs/seam.md): env var redirecting every log root.
+#: Public surface (docs/seam.md): env var redirecting every log root.
 #: Precedence everywhere: explicit ``log_root=`` > this variable > ``LOG_ROOT_DEFAULT``.
-RVND_LOG_ROOT_ENV = "RVND_LOG_ROOT"
+LOG_ROOT_ENV = "LOOMGROUND_LOG_ROOT"
 #: Opt-in: NEW chains record their signing identity in a genesis
 #: ``key_registration`` event. Enforcement of an already-registered chain is
 #: NOT gated on this — unsetting it cannot downgrade a pinned chain.
@@ -65,7 +65,7 @@ SEAL_BACKEND = "audit-chain"
 def resolve_log_root(explicit: "str | Path | None" = None) -> Path:
     if explicit:
         return Path(explicit)
-    env_value = os.environ.get(RVND_LOG_ROOT_ENV)
+    env_value = os.environ.get(LOG_ROOT_ENV)
     if env_value:
         return Path(env_value).expanduser()
     return LOG_ROOT_DEFAULT

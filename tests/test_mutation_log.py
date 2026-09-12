@@ -352,10 +352,10 @@ def test_default_log_root_is_under_home():
 
 
 def test_resolve_log_root_precedence(tmp_path, monkeypatch):
-    from loomground_audit_chain.mutation_log import RVND_LOG_ROOT_ENV, resolve_log_root
-    assert RVND_LOG_ROOT_ENV == "RVND_LOG_ROOT"
+    from loomground_audit_chain.mutation_log import LOG_ROOT_ENV, resolve_log_root
+    assert LOG_ROOT_ENV == "LOOMGROUND_LOG_ROOT"
     assert resolve_log_root() == LOG_ROOT_DEFAULT
-    monkeypatch.setenv(RVND_LOG_ROOT_ENV, str(tmp_path / "env-root"))
+    monkeypatch.setenv(LOG_ROOT_ENV, str(tmp_path / "env-root"))
     assert resolve_log_root() == tmp_path / "env-root"
     assert resolve_log_root(tmp_path / "explicit") == tmp_path / "explicit"
 

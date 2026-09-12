@@ -37,7 +37,7 @@ def _isolated_chain_env(tmp_path, monkeypatch):
     monkeypatch.setenv("WORKSPACES_ALLOW_UNREGISTERED", "1")
     for var in ("WORKSPACE_KEY_PINNING", "WORKSPACE_STRICT_KEY_PINNING",
                 "WORKSPACE_STRICT_HOST_DIVERGENCE", "WORKSPACE_KEY_PASSPHRASE",
-                "WORKSPACE_HOST_ID", "WORKSPACE_KEY_PIN_DIR", "RVND_LOG_ROOT",
+                "WORKSPACE_HOST_ID", "WORKSPACE_KEY_PIN_DIR", "LOOMGROUND_LOG_ROOT",
                 "WORKSPACE_L0_LOG_ROOT"):
         monkeypatch.delenv(var, raising=False)
 

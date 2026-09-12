@@ -73,6 +73,6 @@ def test_append_event_and_read_chain_link_and_sign(tmp_path):
 
 def test_read_chain_default_root_and_missing_log(tmp_path, monkeypatch):
     assert list(read_chain(tmp_path / "nowhere")) == []
-    monkeypatch.setenv(ml.RVND_LOG_ROOT_ENV, str(tmp_path / "root"))
+    monkeypatch.setenv(ml.LOG_ROOT_ENV, str(tmp_path / "root"))
     append_event(tmp_path / "root" / "unscoped", {"kind": "k"})
     assert [e["kind"] for e in read_chain()] == ["k"]

@@ -24,7 +24,7 @@ from loomground_audit_chain.witness_escape import (
 
 @pytest.fixture
 def folder(tmp_path, monkeypatch):
-    monkeypatch.setenv("RVND_LOG_ROOT", str(tmp_path / "logs"))
+    monkeypatch.setenv("LOOMGROUND_LOG_ROOT", str(tmp_path / "logs"))
     f = tmp_path / "org"
     f.mkdir()
     return str(f)
