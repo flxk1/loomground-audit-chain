@@ -7,7 +7,7 @@ An event log can be edited after the fact and still read as complete. Append-onl
 
 ## Install
 ```
-pip install loomground-audit-chain
+pip install "git+https://github.com/flxk1/loomground-audit-chain"
 ```
 
 Requires `loomground-workspace` 0.1 and `cryptography`. Python 3.10+.
@@ -21,7 +21,7 @@ result = log.verify_chain()
 result.ok, result.total_events, intact_attestation(result, subject=log.folder_id)
 ```
 
-Keys live under `~/.workspace/keys/<host_id>/` (`WORKSPACE_KEY_DIR` overrides). The log root defaults to `~/.workspace/log` (`LOOMGROUND_LOG_ROOT` or `log_root=` overrides).
+Keys live under `~/.workspace/keys/<host_id>/` (`WORKSPACE_KEY_DIR` overrides). The log root defaults to `~/.workspace/log` (`LOOMGROUND_LOG_ROOT` or `log_root=` overrides). The folder must be registered with `loomground_workspace.workspace_registry.add_known_workspace` (or `WORKSPACES_ALLOW_UNREGISTERED=1` set); otherwise `MutationLog` raises `FolderContextNotAllowed`.
 
 ## Interface
 - `LogEvent(event, folder_path, pair_id, lifecycle_state, channel, problem_id, source_hash, actor, audit_id, ts, extra)`; `append()` stamps `prev_hash`, `signature`, `host_id`
