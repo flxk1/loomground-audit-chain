@@ -2,6 +2,15 @@
 <!-- Copyright 2026 flxk1 -->
 # Changelog
 
+## [0.1.1](https://github.com/flxk1/loomground-audit-chain/compare/loomground-audit-chain-v0.1.0...loomground-audit-chain-v0.1.1) (2026-09-27)
+
+
+### Documentation
+
+* correct stale claims; add How this is made ([f9a705e](https://github.com/flxk1/loomground-audit-chain/commit/f9a705e5d5fdc2aa3105c5c39abb79224f9dda6f))
+* git install, allowlist precondition; add How this is made ([639f46f](https://github.com/flxk1/loomground-audit-chain/commit/639f46ffd0a5744293b1c2f84580f6f26793a09b))
+* How this is made names no model vendor ([1f7b71e](https://github.com/flxk1/loomground-audit-chain/commit/1f7b71e9952308a9795adbca1919b375fc796a53))
+
 ## 0.1.0
 
 * Published the standalone `mutation_log`, `signing`, `witness_escape`, and `audit_drop` modules under `loomground_audit_chain`; see `docs/seam.md` for the public names, constants, and host ports.
